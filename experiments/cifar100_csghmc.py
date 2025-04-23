@@ -10,11 +10,15 @@ import torch.backends.cudnn as cudnn
 
 import torchvision
 import torchvision.transforms as transforms
+# experiments/run_experiment.py
 
 import os
+import sys
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, root_dir)
+from models.resnet import *
 import argparse
 
-from models import *
 from torch.autograd import Variable
 import numpy as np
 import config as cf
