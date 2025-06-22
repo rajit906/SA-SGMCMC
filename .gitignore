@@ -1,0 +1,14 @@
+cifar/ckpt_desad/
+cifar/ckpt_sghmc/
+cifar/ckpt_sgld/
+cifar/ckpt_sglm/
+cifar/ckpt_sgula/
+cifar/data/
+figs/
+cifar100/ckpt_desad/
+cifar100/ckpt_sghmc/
+cifar100/ckpt_sgld/
+cifar100/ckpt_sglm/
+cifar100/data/
+tables/
+*.sh
