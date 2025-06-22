@@ -12,3 +12,4 @@ cifar100/ckpt_sglm/
 cifar100/data/
 tables/
 *.sh
+*.pt
