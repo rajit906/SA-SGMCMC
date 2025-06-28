@@ -135,7 +135,7 @@ if __name__ == "__main__":
         """Compute gradients for current batch"""
         net.zero_grad()
         outputs = net(inputs)
-        loss = criterion(outputs, targets)  # No scaling!
+        loss = criterion(outputs, targets)
         loss.backward()
         
         # Add weight decay to gradients

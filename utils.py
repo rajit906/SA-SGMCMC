@@ -578,10 +578,9 @@ def print_stats(label, values):
 import matplotlib.pyplot as plt
 import seaborn as sns
 import ast
-
 def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
     """
-    Plot step sizes and zetas traces and distributions for given filters.
+    Plot step sizes, zetas, and gradnorms traces and distributions for given filters.
     Optimized version for faster execution.
     
     Parameters:
@@ -626,6 +625,20 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
                 return []
         return series.apply(safe_eval)
     
+    def recover_gradnorms(zetas, alpha, lr_0):
+        """Recover gradnorms from zeta sequence"""
+        if len(zetas) < 2:
+            return []
+        
+        exptau = np.exp(-alpha * lr_0)
+        gradnorms = []
+        
+        for i in range(1, len(zetas)):
+            gradnorm = alpha * (zetas[i] - exptau * zetas[i-1]) / (1 - exptau)
+            gradnorms.append(gradnorm)
+        
+        return gradnorms
+    
     # Parse all needed columns at once
     print("Parsing data...")
     step_sizes_data = fast_parse(matching_rows["_step_sizes"])
@@ -633,7 +646,7 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
     zetas_data = fast_parse(matching_rows["_zetas"])
     zeta_batch_idx_data = fast_parse(matching_rows["_zeta_batch_idx"])
     
-    fig, axs = plt.subplots(2, 2, figsize=(16, 10))
+    fig, axs = plt.subplots(3, 2, figsize=(16, 15))
     
     # Process each run with optimizations
     for idx, (i, row) in enumerate(matching_rows.iterrows()):
@@ -653,6 +666,10 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
         if len(steps) == 0 or len(zetas) == 0:
             print(f"Skipping run {idx+1} due to empty data")
             continue
+        
+        # Recover gradnorms from zetas
+        gradnorms = recover_gradnorms(zetas, row['alpha'], row['dtau'])
+        gradnorm_bidx = zeta_bidx[1:]  # Skip first zeta since we start from second
         
         # Aggressive subsampling for large datasets to speed up plotting
         max_trace_points = 5000  # Reduced from potential millions
@@ -688,6 +705,21 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
         else:
             zetas_kde = zetas
         
+        # Subsample gradnorm data
+        if len(gradnorms) > max_trace_points:
+            trace_idx = np.linspace(0, len(gradnorms)-1, max_trace_points, dtype=int)
+            gradnorms_trace = np.array(gradnorms)[trace_idx]
+            gradnorm_bidx_trace = gradnorm_bidx[trace_idx]
+        else:
+            gradnorms_trace = gradnorms
+            gradnorm_bidx_trace = gradnorm_bidx
+            
+        if len(gradnorms) > max_kde_points:
+            kde_idx = np.random.choice(len(gradnorms), max_kde_points, replace=False)
+            gradnorms_kde = np.array(gradnorms)[kde_idx]
+        else:
+            gradnorms_kde = gradnorms
+        
         # Plot with reduced line width for performance
         color = plt.cm.tab10(idx % 10)  # Cycle through colors
         alpha_val = 0.7 if len(matching_rows) > 5 else 1.0
@@ -696,6 +728,7 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
         lw = 0.8 if len(matching_rows) > 10 else 1.0
         axs[0, 0].plot(bidx_trace, steps_trace, lw=lw, label=label, color=color, alpha=alpha_val)
         axs[1, 0].plot(zeta_bidx_trace, zetas_trace, lw=lw, label=label, color=color, alpha=alpha_val)
+        axs[2, 0].plot(gradnorm_bidx_trace, gradnorms_trace, lw=lw, label=label, color=color, alpha=alpha_val)
         
         # Distributions with subsampled data
         try:
@@ -703,6 +736,9 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
                        color=color, alpha=alpha_val)
             sns.kdeplot(zetas_kde, ax=axs[1, 1], label=label, linewidth=1.2, 
                        color=color, alpha=alpha_val)
+            if len(gradnorms_kde) > 0:
+                sns.kdeplot(gradnorms_kde, ax=axs[2, 1], label=label, linewidth=1.2, 
+                           color=color, alpha=alpha_val)
         except Exception as e:
             print(f"KDE plot failed for run {idx+1}: {e}")
     
@@ -722,6 +758,14 @@ def plot_stepsizes_and_zetas(df, M, alpha, dtau, omega, r, max_runs=None):
     axs[1, 1].set_title("Zeta Distribution")
     axs[1, 1].set_xlabel("Zeta")
     axs[1, 1].set_ylabel("Density")
+    
+    axs[2, 0].set_title("Gradnorm Trace (Recovered)")
+    axs[2, 0].set_xlabel("Batch Index")
+    axs[2, 0].set_ylabel("Gradnorm")
+    
+    axs[2, 1].set_title("Gradnorm Distribution (Recovered)")
+    axs[2, 1].set_xlabel("Gradnorm")
+    axs[2, 1].set_ylabel("Density")
     
     # Smart legend handling - avoid legends for too many runs as they slow down rendering
     if len(matching_rows) <= 8:
@@ -839,3 +883,301 @@ def extract_metrics_from_dir(dir_path):
     return (acc, nll, ece, auroc_entropy,
             (min_lr, mean_lr, max_lr, std_lr), all_stepsizes, bidx,
             (min_zeta, mean_zeta, max_zeta, std_zeta), all_zetas, zeta_bidx)
+
+
+import pandas as pd
+from typing import Optional, Dict, Any, Tuple
+
+def filter_experiments(
+    df: pd.DataFrame,
+    # Hyperparameter filters (exact matches)
+    m: Optional[float] = None,
+    M: Optional[float] = None,
+    r: Optional[float] = None,
+    alpha: Optional[float] = None,
+    dtau: Optional[float] = None,
+    Omega: Optional[float] = None,
+    # Result filters (inequalities)
+    ECE: Optional[Tuple[str, float]] = None,  # e.g., ('<', 0.1) or ('>=', 0.05)
+    Acc: Optional[Tuple[str, float]] = None,  # e.g., ('>', 0.9)
+    OOD_AUC: Optional[Tuple[str, float]] = None,  # e.g., ('>=', 0.8)
+    # Stepsize mean filter
+    stepsize_mean: Optional[float] = None,  # Filter by mean stepsize within tolerance
+    stepsize_mean_tolerance: float = 0.01,  # Tolerance for stepsize mean comparison
+    # Additional options
+    hyperparameter_tolerance: float = 1e-9,  # For floating point comparison
+    return_copy: bool = True
+) -> pd.DataFrame:
+    """
+    Filter a DataFrame of experiments based on hyperparameters and result thresholds.
+    
+    Parameters:
+    -----------
+    df : pd.DataFrame
+        DataFrame with columns for hyperparameters (m, M, r, alpha, dtau, Omega),
+        results (ECE, Acc, OOD_AUC), and 'Min Mean Max Std Stepsize'
+    
+    Hyperparameter filters (exact match within tolerance):
+    m, M, r, alpha, dtau, Omega : float, optional
+        If specified, only rows with matching values are returned
+    
+    Result filters (inequalities):
+    ECE, Acc, OOD_AUC : tuple of (str, float), optional
+        Tuple of (comparison_operator, threshold)
+        comparison_operator can be: '<', '<=', '>', '>=', '==', '!='
+        Example: ECE=('<', 0.1) returns rows where ECE < 0.1
+    
+    stepsize_mean : float, optional
+        If specified, filters rows where the mean stepsize (2nd value in 
+        'Min Mean Max Std Stepsize' column) is within stepsize_mean_tolerance
+    
+    stepsize_mean_tolerance : float, default=0.01
+        Tolerance for stepsize mean comparison
+    
+    hyperparameter_tolerance : float, default=1e-9
+        Tolerance for floating point comparison of hyperparameters
+    
+    return_copy : bool, default=True
+        If True, returns a copy of the filtered DataFrame
+    
+    Returns:
+    --------
+    pd.DataFrame
+        Filtered DataFrame containing only rows that match all specified criteria
+    
+    Examples:
+    ---------
+    # Get all experiments with m=0.5 and accuracy > 90%
+    filtered = filter_experiments(df, m=0.5, Acc=('>', 0.9))
+    
+    # Get experiments with low ECE and high OOD performance
+    filtered = filter_experiments(df, ECE=('<', 0.05), OOD_AUC=('>=', 0.85))
+    
+    # Get experiments with mean stepsize around 0.025
+    filtered = filter_experiments(df, stepsize_mean=0.025)
+    
+    # Get all experiments (no filters)
+    all_experiments = filter_experiments(df)
+    """
+    
+    # Start with all rows
+    if return_copy:
+        result_df = df.copy()
+    else:
+        result_df = df
+    
+    mask = pd.Series(True, index=result_df.index)
+    
+    # Apply hyperparameter filters (exact matches with tolerance)
+    hyperparameter_filters = {
+        'm': m, 'M': M, 'r': r, 'alpha': alpha, 'dtau': dtau, 'Omega': Omega
+    }
+    
+    for param_name, param_value in hyperparameter_filters.items():
+        if param_value is not None:
+            if param_name in result_df.columns:
+                mask &= abs(result_df[param_name] - param_value) <= hyperparameter_tolerance
+            else:
+                print(f"Warning: Column '{param_name}' not found in DataFrame")
+    
+    # Apply result filters (inequalities)
+    result_filters = {
+        'ECE': ECE, 'Acc': Acc, 'OOD_AUC': OOD_AUC
+    }
+    
+    comparison_ops = {
+        '<': lambda x, y: x < y,
+        '<=': lambda x, y: x <= y,
+        '>': lambda x, y: x > y,
+        '>=': lambda x, y: x >= y,
+        '==': lambda x, y: x == y,
+        '!=': lambda x, y: x != y,
+    }
+    
+    for result_name, result_condition in result_filters.items():
+        if result_condition is not None:
+            if result_name in result_df.columns:
+                op_str, threshold = result_condition
+                if op_str in comparison_ops:
+                    mask &= comparison_ops[op_str](result_df[result_name], threshold)
+                else:
+                    raise ValueError(f"Invalid comparison operator: {op_str}")
+            else:
+                print(f"Warning: Column '{result_name}' not found in DataFrame")
+    
+    # Apply stepsize mean filter
+    if stepsize_mean is not None:
+        stepsize_col = 'Min Mean Max Std Stepsize'
+        if stepsize_col in result_df.columns:
+            # Extract the mean (2nd value) from the string format
+            def extract_mean_stepsize(stepsize_str):
+                try:
+                    values = stepsize_str.split()
+                    if len(values) >= 2:
+                        return float(values[1])
+                    else:
+                        return None
+                except:
+                    return None
+            
+            mean_stepsizes = result_df[stepsize_col].apply(extract_mean_stepsize)
+            valid_stepsizes = mean_stepsizes.notna()
+            stepsize_mask = valid_stepsizes & (abs(mean_stepsizes - stepsize_mean) <= stepsize_mean_tolerance)
+            mask &= stepsize_mask
+        else:
+            print(f"Warning: Column '{stepsize_col}' not found in DataFrame")
+    
+    return result_df[mask]
+
+
+# Alternative implementation with a more flexible interface
+def filter_experiments_flexible(
+    df: pd.DataFrame,
+    hyperparameters: Optional[Dict[str, Any]] = None,
+    results: Optional[Dict[str, Tuple[str, float]]] = None,
+    stepsize_mean: Optional[float] = None,
+    stepsize_mean_tolerance: float = 0.01,
+    hyperparameter_tolerance: float = 1e-9,
+    return_copy: bool = True
+) -> pd.DataFrame:
+    """
+    Alternative implementation with dictionary-based interface.
+    
+    Parameters:
+    -----------
+    df : pd.DataFrame
+        DataFrame with experiment results
+    
+    hyperparameters : dict, optional
+        Dictionary of hyperparameter names and values for exact matching
+        Example: {'m': 0.5, 'alpha': 0.1}
+    
+    results : dict, optional
+        Dictionary of result names and (operator, threshold) tuples
+        Example: {'ECE': ('<', 0.1), 'Acc': ('>', 0.9)}
+    
+    stepsize_mean : float, optional
+        If specified, filters rows where the mean stepsize is within tolerance
+    
+    stepsize_mean_tolerance : float, default=0.01
+        Tolerance for stepsize mean comparison
+    
+    Returns:
+    --------
+    pd.DataFrame
+        Filtered DataFrame
+    
+    Examples:
+    ---------
+    filtered = filter_experiments_flexible(
+        df,
+        hyperparameters={'m': 0.5, 'M': 1.0},
+        results={'ECE': ('<', 0.05), 'Acc': ('>=', 0.95)},
+        stepsize_mean=0.025
+    )
+    """
+    if return_copy:
+        result_df = df.copy()
+    else:
+        result_df = df
+    
+    mask = pd.Series(True, index=result_df.index)
+    
+    # Apply hyperparameter filters
+    if hyperparameters:
+        for param_name, param_value in hyperparameters.items():
+            if param_name in result_df.columns:
+                mask &= abs(result_df[param_name] - param_value) <= hyperparameter_tolerance
+            else:
+                print(f"Warning: Column '{param_name}' not found in DataFrame")
+    
+    # Apply result filters
+    if results:
+        comparison_ops = {
+            '<': lambda x, y: x < y,
+            '<=': lambda x, y: x <= y,
+            '>': lambda x, y: x > y,
+            '>=': lambda x, y: x >= y,
+            '==': lambda x, y: x == y,
+            '!=': lambda x, y: x != y,
+        }
+        
+        for result_name, (op_str, threshold) in results.items():
+            if result_name in result_df.columns:
+                if op_str in comparison_ops:
+                    mask &= comparison_ops[op_str](result_df[result_name], threshold)
+                else:
+                    raise ValueError(f"Invalid comparison operator: {op_str}")
+            else:
+                print(f"Warning: Column '{result_name}' not found in DataFrame")
+    
+    # Apply stepsize mean filter
+    if stepsize_mean is not None:
+        stepsize_col = 'Min Mean Max Std Stepsize'
+        if stepsize_col in result_df.columns:
+            # Extract the mean (2nd value) from the string format
+            def extract_mean_stepsize(stepsize_str):
+                try:
+                    values = stepsize_str.split()
+                    if len(values) >= 2:
+                        return float(values[1])
+                    else:
+                        return None
+                except:
+                    return None
+            
+            mean_stepsizes = result_df[stepsize_col].apply(extract_mean_stepsize)
+            valid_stepsizes = mean_stepsizes.notna()
+            stepsize_mask = valid_stepsizes & (abs(mean_stepsizes - stepsize_mean) <= stepsize_mean_tolerance)
+            mask &= stepsize_mask
+        else:
+            print(f"Warning: Column '{stepsize_col}' not found in DataFrame")
+    
+    return result_df[mask]
+
+
+# Utility function to get best experiments according to a metric
+def get_best_experiments(
+    df: pd.DataFrame,
+    optimize_for: str,
+    minimize: bool = True,
+    n_best: int = 10,
+    constraints: Optional[Dict[str, Tuple[str, float]]] = None
+) -> pd.DataFrame:
+    """
+    Get the best n experiments according to a specific metric.
+    
+    Parameters:
+    -----------
+    df : pd.DataFrame
+        DataFrame with experiment results
+    
+    optimize_for : str
+        Column name to optimize (e.g., 'ECE', 'Acc', 'OOD_AUC')
+    
+    minimize : bool, default=True
+        If True, lower values are better (e.g., for ECE)
+        If False, higher values are better (e.g., for Acc)
+    
+    n_best : int, default=10
+        Number of best experiments to return
+    
+    constraints : dict, optional
+        Additional constraints on other metrics
+        Example: {'Acc': ('>', 0.9)} to only consider experiments with Acc > 0.9
+    
+    Returns:
+    --------
+    pd.DataFrame
+        Top n experiments sorted by the optimization metric
+    """
+    # First apply constraints if any
+    if constraints:
+        filtered_df = filter_experiments_flexible(df, results=constraints)
+    else:
+        filtered_df = df.copy()
+    
+    # Sort by the optimization metric
+    sorted_df = filtered_df.sort_values(by=optimize_for, ascending=minimize)
+    
+    return sorted_df.head(n_best)

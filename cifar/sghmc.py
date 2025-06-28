@@ -212,7 +212,7 @@ if __name__ == "__main__":
     for epoch in tqdm(range(args.epochs)):
         zeta = train(epoch, zeta)
         test(epoch)
-        cp_path = create_dir(args.dir, args.experiment_dir, args.sampler_type)
+        cp_path = create_dir(args.dir, args.experiment_dir, f"{args.sampler_type}_new")
         if epoch > 150 and epoch % 3 == 0:
             if args.sampler_type == 'sghmc':
                 model_path = os.path.join(cp_path, 'S' + str(args.seed))

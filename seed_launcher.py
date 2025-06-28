@@ -7,14 +7,12 @@ import atexit
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Grid search parameters - updated to match your actual run
-lr_inits = [0.01]
-alphas = [50.0, 100.0, 500.0]
-rs = [0.25, 0.5]
-omegas = [0.1, 10., 100.]  # Fixed omega value as per your actual runs
-gpus = [2, 3, 4, 5, 6, 7]  # Updated to match your actual GPU usage
+lr_inits = ["0.01", "0.02", "0.03", "0.04", "0.05", "0.06", "0.07", "0.08", "0.09", "0.1"]
+seeds = [1,2,3,4,5]
+gpus = [3, 5, 6, 7]  # Updated to match your actual GPU usage
 
 os.makedirs("logs", exist_ok=True)
-grid = list(itertools.product(lr_inits, alphas, rs, omegas))
+grid = list(itertools.product(lr_inits, seeds))
 
 def clear_gpu_memory(gpu_id):
     """Clear GPU memory for a specific GPU"""
@@ -111,17 +109,17 @@ def run_command(cmd_tuple):
 
 # Prepare commands with correct parameter names and formatting
 commands = []
-for lr_init, alpha, r, omega in grid:
+for lr_init, seed in grid:
     # Create log filename matching your pattern
-    log_path = f"logs/sa_sgld_new_lr{lr_init}_a{alpha}_r{r}_o{omega}.log"
+    log_path = f"logs/sgld_lr{lr_init}_seed{seed}.log"
     
+    # FIXED: Added space between parameters
     cmd = (
         f"python3 cifar/sgld.py "
-        f"--sampler_type='sa-sgld' "
-        f"--lr_init={lr_init} "
-        f"--alpha={alpha} "
-        f"--r={r} "
-        f"--omega={omega} "
+        f"--sampler_type='sgld' "
+        f"--lr_init={float(lr_init)} "
+        f"--experiment_dir={lr_init} "  # Added space here
+        f"--seed={seed} "               # Added space here for consistency
         f"> {log_path} 2>&1"
     )
     

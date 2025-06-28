@@ -1,0 +1,273 @@
+🎯 Starting grid search with 50 jobs across 4 GPUs (3 jobs per GPU)
+📊 Estimated runtime: ~12.5 hours
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.01 --experiment_dir=0.01 --seed=1 > logs/sgld_lr0.01_seed1.log 2>&1
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.01 --experiment_dir=0.01 --seed=2 > logs/sgld_lr0.01_seed2.log 2>&1
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.01 --experiment_dir=0.01 --seed=3 > logs/sgld_lr0.01_seed3.log 2>&1
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.01 --experiment_dir=0.01 --seed=4 > logs/sgld_lr0.01_seed4.log 2>&1
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.01 --experiment_dir=0.01 --seed=5 > logs/sgld_lr0.01_seed5.log 2>&1
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.02 --experiment_dir=0.02 --seed=1 > logs/sgld_lr0.02_seed1.log 2>&1
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.02 --experiment_dir=0.02 --seed=2 > logs/sgld_lr0.02_seed2.log 2>&1
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.02 --experiment_dir=0.02 --seed=3 > logs/sgld_lr0.02_seed3.log 2>&1
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.02 --experiment_dir=0.02 --seed=4 > logs/sgld_lr0.02_seed4.log 2>&1
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.02 --experiment_dir=0.02 --seed=5 > logs/sgld_lr0.02_seed5.log 2>&1
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.03 --experiment_dir=0.03 --seed=1 > logs/sgld_lr0.03_seed1.log 2>&1
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.03 --experiment_dir=0.03 --seed=2 > logs/sgld_lr0.03_seed2.log 2>&1
+✅ GPU 5 completed successfully in 10341.73s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.03 --experiment_dir=0.03 --seed=3 > logs/sgld_lr0.03_seed3.log 2>&1
+📈 Progress: 1/50 (✅ 1 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10353.74s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.03 --experiment_dir=0.03 --seed=4 > logs/sgld_lr0.03_seed4.log 2>&1
+📈 Progress: 2/50 (✅ 2 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10400.24s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.03 --experiment_dir=0.03 --seed=5 > logs/sgld_lr0.03_seed5.log 2>&1
+📈 Progress: 3/50 (✅ 3 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10460.03s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.04 --experiment_dir=0.04 --seed=1 > logs/sgld_lr0.04_seed1.log 2>&1
+📈 Progress: 4/50 (✅ 4 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10467.50s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.04 --experiment_dir=0.04 --seed=2 > logs/sgld_lr0.04_seed2.log 2>&1
+📈 Progress: 5/50 (✅ 5 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10472.08s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.04 --experiment_dir=0.04 --seed=3 > logs/sgld_lr0.04_seed3.log 2>&1
+📈 Progress: 6/50 (✅ 6 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10486.02s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.04 --experiment_dir=0.04 --seed=4 > logs/sgld_lr0.04_seed4.log 2>&1
+📈 Progress: 7/50 (✅ 7 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10514.52s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.04 --experiment_dir=0.04 --seed=5 > logs/sgld_lr0.04_seed5.log 2>&1
+📈 Progress: 8/50 (✅ 8 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10518.84s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.05 --experiment_dir=0.05 --seed=1 > logs/sgld_lr0.05_seed1.log 2>&1
+📈 Progress: 9/50 (✅ 9 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10634.58s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.05 --experiment_dir=0.05 --seed=2 > logs/sgld_lr0.05_seed2.log 2>&1
+📈 Progress: 10/50 (✅ 10 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10647.91s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.05 --experiment_dir=0.05 --seed=3 > logs/sgld_lr0.05_seed3.log 2>&1
+📈 Progress: 11/50 (✅ 11 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10659.32s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.05 --experiment_dir=0.05 --seed=4 > logs/sgld_lr0.05_seed4.log 2>&1
+📈 Progress: 12/50 (✅ 12 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10334.02s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.05 --experiment_dir=0.05 --seed=5 > logs/sgld_lr0.05_seed5.log 2>&1
+📈 Progress: 13/50 (✅ 13 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10364.41s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.06 --experiment_dir=0.06 --seed=1 > logs/sgld_lr0.06_seed1.log 2>&1
+📈 Progress: 14/50 (✅ 14 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10494.90s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.06 --experiment_dir=0.06 --seed=2 > logs/sgld_lr0.06_seed2.log 2>&1
+📈 Progress: 15/50 (✅ 15 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10516.63s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.06 --experiment_dir=0.06 --seed=3 > logs/sgld_lr0.06_seed3.log 2>&1
+📈 Progress: 16/50 (✅ 16 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10350.83s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.06 --experiment_dir=0.06 --seed=4 > logs/sgld_lr0.06_seed4.log 2>&1
+📈 Progress: 17/50 (✅ 17 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10395.70s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.06 --experiment_dir=0.06 --seed=5 > logs/sgld_lr0.06_seed5.log 2>&1
+📈 Progress: 18/50 (✅ 18 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10545.76s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.07 --experiment_dir=0.07 --seed=1 > logs/sgld_lr0.07_seed1.log 2>&1
+📈 Progress: 19/50 (✅ 19 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10311.41s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.07 --experiment_dir=0.07 --seed=2 > logs/sgld_lr0.07_seed2.log 2>&1
+📈 Progress: 20/50 (✅ 20 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10466.36s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.07 --experiment_dir=0.07 --seed=3 > logs/sgld_lr0.07_seed3.log 2>&1
+📈 Progress: 21/50 (✅ 21 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10419.38s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.07 --experiment_dir=0.07 --seed=4 > logs/sgld_lr0.07_seed4.log 2>&1
+📈 Progress: 22/50 (✅ 22 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10511.19s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.07 --experiment_dir=0.07 --seed=5 > logs/sgld_lr0.07_seed5.log 2>&1
+📈 Progress: 23/50 (✅ 23 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10688.52s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.08 --experiment_dir=0.08 --seed=1 > logs/sgld_lr0.08_seed1.log 2>&1
+📈 Progress: 24/50 (✅ 24 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10290.80s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.08 --experiment_dir=0.08 --seed=2 > logs/sgld_lr0.08_seed2.log 2>&1
+📈 Progress: 25/50 (✅ 25 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10419.15s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.08 --experiment_dir=0.08 --seed=3 > logs/sgld_lr0.08_seed3.log 2>&1
+📈 Progress: 26/50 (✅ 26 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10414.02s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.08 --experiment_dir=0.08 --seed=4 > logs/sgld_lr0.08_seed4.log 2>&1
+📈 Progress: 27/50 (✅ 27 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10496.25s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.08 --experiment_dir=0.08 --seed=5 > logs/sgld_lr0.08_seed5.log 2>&1
+📈 Progress: 28/50 (✅ 28 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10335.10s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.09 --experiment_dir=0.09 --seed=1 > logs/sgld_lr0.09_seed1.log 2>&1
+📈 Progress: 29/50 (✅ 29 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10465.85s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.09 --experiment_dir=0.09 --seed=2 > logs/sgld_lr0.09_seed2.log 2>&1
+📈 Progress: 30/50 (✅ 30 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10611.15s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.09 --experiment_dir=0.09 --seed=3 > logs/sgld_lr0.09_seed3.log 2>&1
+📈 Progress: 31/50 (✅ 31 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10332.42s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.09 --experiment_dir=0.09 --seed=4 > logs/sgld_lr0.09_seed4.log 2>&1
+📈 Progress: 32/50 (✅ 32 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10476.71s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.09 --experiment_dir=0.09 --seed=5 > logs/sgld_lr0.09_seed5.log 2>&1
+📈 Progress: 33/50 (✅ 33 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10427.99s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.1 --experiment_dir=0.1 --seed=1 > logs/sgld_lr0.1_seed1.log 2>&1
+📈 Progress: 34/50 (✅ 34 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10706.30s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+🚀 Starting on GPU 6: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.1 --experiment_dir=0.1 --seed=2 > logs/sgld_lr0.1_seed2.log 2>&1
+📈 Progress: 35/50 (✅ 35 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10650.98s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 7: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.1 --experiment_dir=0.1 --seed=3 > logs/sgld_lr0.1_seed3.log 2>&1
+📈 Progress: 36/50 (✅ 36 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10181.84s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+🚀 Starting on GPU 3: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.1 --experiment_dir=0.1 --seed=4 > logs/sgld_lr0.1_seed4.log 2>&1
+📈 Progress: 37/50 (✅ 37 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10496.91s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+🚀 Starting on GPU 5: python3 cifar/sgld.py --sampler_type='sgld' --lr_init=0.1 --experiment_dir=0.1 --seed=5 > logs/sgld_lr0.1_seed5.log 2>&1
+📈 Progress: 38/50 (✅ 38 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10412.54s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+📈 Progress: 39/50 (✅ 39 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10367.43s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+📈 Progress: 40/50 (✅ 40 success, ❌ 0 failed)
+✅ GPU 7 completed successfully in 10346.63s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 7: 
+📈 Progress: 41/50 (✅ 41 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10587.71s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+📈 Progress: 42/50 (✅ 42 success, ❌ 0 failed)
+✅ GPU 6 completed successfully in 10332.48s
+🧹 Cleaning GPU 6 memory...
+⚠ Warning: Failed to clear GPU 6: 
+📈 Progress: 43/50 (✅ 43 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10665.37s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+📈 Progress: 44/50 (✅ 44 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10536.85s
+🧹 Cleaning GPU 5 memory...
+✅ GPU 7 completed successfully in 10314.16s
+🧹 Cleaning GPU 7 memory...
+⚠ Warning: Failed to clear GPU 5: 
+📈 Progress: 45/50 (✅ 45 success, ❌ 0 failed)
+⚠ Warning: Failed to clear GPU 7: 
+📈 Progress: 46/50 (✅ 46 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 10462.63s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+📈 Progress: 47/50 (✅ 47 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 10754.18s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+📈 Progress: 48/50 (✅ 48 success, ❌ 0 failed)
+✅ GPU 3 completed successfully in 4860.70s
+🧹 Cleaning GPU 3 memory...
+⚠ Warning: Failed to clear GPU 3: 
+📈 Progress: 49/50 (✅ 49 success, ❌ 0 failed)
+✅ GPU 5 completed successfully in 4898.97s
+🧹 Cleaning GPU 5 memory...
+⚠ Warning: Failed to clear GPU 5: 
+📈 Progress: 50/50 (✅ 50 success, ❌ 0 failed)
+
+📊 Final Results:
+  ✅ Completed: 50
+  ❌ Failed: 0
+  📝 Total: 50
+
+🧹 Performing final cleanup...
+🧹 Clearing memory on all GPUs...
+⚠ Warning: Failed to clear GPU 3: 
+⚠ Warning: Failed to clear GPU 5: 
+⚠ Warning: Failed to clear GPU 6: 
+⚠ Warning: Failed to clear GPU 7: 
+🎉 Grid search finished!
+
+🛑 Performing cleanup...
+🧹 Clearing memory on all GPUs...
+⚠ Warning: Failed to clear GPU 3: 
+⚠ Warning: Failed to clear GPU 5: 
+⚠ Warning: Failed to clear GPU 6: 
+⚠ Warning: Failed to clear GPU 7: 
+✅ Cleanup complete

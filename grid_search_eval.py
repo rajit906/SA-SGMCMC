@@ -23,7 +23,7 @@ def find_directories_needing_eval():
     return directories_to_eval
 
 # GPUs to use
-gpus = [1, 2, 3, 4]
+gpus = [0, 2, 3, 5, 6, 7]
 
 # Find all directories that need evaluation
 directories_to_eval = find_directories_needing_eval()

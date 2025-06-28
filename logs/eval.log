@@ -1,0 +1,220 @@
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9358, NLL 0.2189
+Saved metrics to cifar/ckpt_sgld/sgld/0.01/S3/eval_metrics_16.json
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9498, NLL 0.1928
+Saved metrics to cifar/ckpt_sgld/sgld/0.07/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9479, NLL 0.2775
+Saved metrics to cifar/ckpt_sgld/sgld/0.1/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9359, NLL 0.2075
+Saved metrics to cifar/ckpt_sgld/sgld/0.01/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9461, NLL 0.2390
+Saved metrics to cifar/ckpt_sgld/sgld/0.09/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9483, NLL 0.2375
+Saved metrics to cifar/ckpt_sgld/sgld/0.07/S5/eval_metrics_16.json
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9400, NLL 0.1964
+Saved metrics to cifar/ckpt_sgld/sgld/0.01/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9493, NLL 0.2093
+Saved metrics to cifar/ckpt_sgld/sgld/0.07/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9452, NLL 0.2581
+Saved metrics to cifar/ckpt_sgld/sgld/0.1/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9479, NLL 0.2543
+Saved metrics to cifar/ckpt_sgld/sgld/0.09/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9507, NLL 0.1918
+Saved metrics to cifar/ckpt_sgld/sgld/0.07/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9498, NLL 0.2255
+Saved metrics to cifar/ckpt_sgld/sgld/0.09/S4/eval_metrics_16.json
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9351, NLL 0.2090
+Saved metrics to cifar/ckpt_sgld/sgld/0.01/S4/eval_metrics_16.json
+/disk/homeDIRS/rrajpal/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:2981: UserWarning: The y_pred values do not sum to one. Starting from 1.5 thiswill result in an error.
+  warnings.warn(
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9497, NLL 0.2345
+Saved metrics to cifar/ckpt_sgld/sgld/0.1/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9372, NLL 0.2159
+Saved metrics to cifar/ckpt_sgld/sgld/0.01/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9500, NLL 0.2381
+Saved metrics to cifar/ckpt_sgld/sgld/0.09/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9462, NLL 0.2690
+Saved metrics to cifar/ckpt_sgld/sgld/0.09/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9491, NLL 0.2018
+Saved metrics to cifar/ckpt_sgld/sgld/0.07/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9486, NLL 0.2205
+Saved metrics to cifar/ckpt_sgld/sgld/0.1/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9443, NLL 0.3461
+Saved metrics to cifar/ckpt_sgld/sgld/0.1/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9490, NLL 0.1860
+Saved metrics to cifar/ckpt_sgld/sgld/0.03/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9448, NLL 0.1803
+Saved metrics to cifar/ckpt_sgld/sgld/0.02/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9460, NLL 0.1906
+Saved metrics to cifar/ckpt_sgld/sgld/0.03/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9503, NLL 0.1728
+Saved metrics to cifar/ckpt_sgld/sgld/0.05/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9449, NLL 0.1921
+Saved metrics to cifar/ckpt_sgld/sgld/0.02/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9481, NLL 0.1732
+Saved metrics to cifar/ckpt_sgld/sgld/0.03/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9477, NLL 0.1802
+Saved metrics to cifar/ckpt_sgld/sgld/0.03/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9495, NLL 0.2493
+Saved metrics to cifar/ckpt_sgld/sgld/0.05/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9474, NLL 0.2289
+Saved metrics to cifar/ckpt_sgld/sgld/0.04/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9466, NLL 0.1768
+Saved metrics to cifar/ckpt_sgld/sgld/0.02/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9456, NLL 0.1921
+Saved metrics to cifar/ckpt_sgld/sgld/0.03/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9508, NLL 0.2063
+Saved metrics to cifar/ckpt_sgld/sgld/0.05/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9460, NLL 0.1967
+Saved metrics to cifar/ckpt_sgld/sgld/0.02/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9493, NLL 0.1723
+Saved metrics to cifar/ckpt_sgld/sgld/0.04/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9482, NLL 0.2012
+Saved metrics to cifar/ckpt_sgld/sgld/0.05/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9468, NLL 0.2110
+Saved metrics to cifar/ckpt_sgld/sgld/0.04/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9464, NLL 0.1737
+Saved metrics to cifar/ckpt_sgld/sgld/0.02/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9538, NLL 0.2081
+Saved metrics to cifar/ckpt_sgld/sgld/0.08/S1/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9489, NLL 0.2158
+Saved metrics to cifar/ckpt_sgld/sgld/0.04/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9493, NLL 0.2779
+Saved metrics to cifar/ckpt_sgld/sgld/0.08/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9482, NLL 0.2047
+Saved metrics to cifar/ckpt_sgld/sgld/0.05/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9476, NLL 0.2309
+Saved metrics to cifar/ckpt_sgld/sgld/0.04/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9500, NLL 0.2362
+Saved metrics to cifar/ckpt_sgld/sgld/0.06/S5/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9501, NLL 0.2070
+Saved metrics to cifar/ckpt_sgld/sgld/0.08/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9476, NLL 0.2498
+Saved metrics to cifar/ckpt_sgld/sgld/0.06/S4/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9477, NLL 0.2702
+Saved metrics to cifar/ckpt_sgld/sgld/0.08/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9477, NLL 0.2017
+Saved metrics to cifar/ckpt_sgld/sgld/0.06/S3/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9460, NLL 0.2326
+Saved metrics to cifar/ckpt_sgld/sgld/0.08/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9468, NLL 0.2440
+Saved metrics to cifar/ckpt_sgld/sgld/0.06/S2/eval_metrics_16.json
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy 0.9499, NLL 0.2061
+Saved metrics to cifar/ckpt_sgld/sgld/0.06/S1/eval_metrics_16.json

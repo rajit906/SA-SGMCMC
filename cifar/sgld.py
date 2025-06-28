@@ -36,9 +36,9 @@ def parse_args():
     parser.add_argument('--sampler_type', required=True, choices=['sgld', 'csgld', 'sa-sgld', 'sa-csgld'])
     ### These are for SA-SGLD
     parser.add_argument('--alpha', default=50., type=float)
-    parser.add_argument('--lr_init', default=0.1, type=float)  # This is for SGLD as well
-    parser.add_argument('--m', default=0.02, type=float)
-    parser.add_argument('--M', default=2., type=float)
+    parser.add_argument('--lr_init', default=0.01, type=float)  # This is for SGLD as well
+    parser.add_argument('--m', default=0.1, type=float)
+    parser.add_argument('--M', default=10., type=float)
     parser.add_argument('--r', default=0.25, type=float)
     parser.add_argument('--omega', default=1., type=float)
     ###
@@ -90,8 +90,6 @@ if __name__ == "__main__":
     # initial learning rate
     lr_0 = args.lr_init
     zeta = torch.tensor(0.) #None
-    if args.sampler_type == 'sgld':
-        lr_0 = 0.1
         
     if args.sampler_type == 'csgld':
         num_cycles = 4
@@ -129,19 +127,13 @@ if __name__ == "__main__":
 
         elif args.sampler_type == 'sa-sgld':
             exptau = torch.exp(-torch.tensor(args.alpha * lr_0))
-            zeta = exptau * zeta + (1 - exptau) * gradnorm / args.alpha
+            zeta = exptau * zeta + (1 - exptau) * gradnorm
             zeta_r = zeta ** args.r
             lr = lr_0 * args.m * (zeta_r + args.M) / (zeta_r + args.m)
             lr = lr.item()
+            
         elif args.sampler_type == 'sgld':
-            if args.experiment_dir is not None:
-                lr = float(args.experiment_dir)
-            else:
-                if epoch < 150:
-                    lr = lr_0 * (rcounter) ** (-0.2)
-                else:
-                    rc_new = (epoch - 150) * num_batch + batch_idx + 1
-                    lr = lr_0/10 * (rc_new) ** -0.5
+            lr = float(args.experiment_dir)
         for pg in optimizer.param_groups:
             pg['lr'] = lr
         return lr, zeta
